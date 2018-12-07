@@ -1,0 +1,1022 @@
+{\rtf1\ansi\ansicpg936\cocoartf1561\cocoasubrtf400
+{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-BoldItalic;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Italic;\f4\fnil\fcharset134 PingFangSC-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue109;\red82\green0\blue103;\red0\green0\blue254;
+\red109\green109\blue109;\red15\green112\blue3;\red103\green104\blue52;\red0\green0\blue109;\red55\green113\blue112;
+\red82\green0\blue103;\red0\green0\blue254;\red15\green112\blue3;\red103\green104\blue52;\red55\green113\blue112;
+\red109\green109\blue109;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c42745;\csgenericrgb\c32157\c0\c40392;\csgenericrgb\c0\c0\c99608;
+\csgenericrgb\c42745\c42745\c42745;\csgenericrgb\c5882\c43922\c1176;\csgenericrgb\c40392\c40784\c20392;\csgenericrgb\c0\c0\c42745;\csgenericrgb\c21569\c44314\c43922;
+\csgenericrgb\c32157\c0\c40392;\csgenericrgb\c0\c0\c99608;\csgenericrgb\c5882\c43922\c1176;\csgenericrgb\c40392\c40784\c20392;\csgenericrgb\c21569\c44314\c43922;
+\csgenericrgb\c42745\c42745\c42745;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b\fs24 \cf2 var 
+\f1\i \cf3 caseId 
+\f2\i0\b0 \cf0 = -\cf4 1\cf0 ;\uc0\u8232 $(
+\f0\b \cf2 function
+\f2\b0 \cf0 ()\{\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f3\i \cf5 //
+\f4\i0 \'cb\'b0\'c2\'ca
+\f3\i \uc0\u8232 
+\f2\i0 \cf0 $(
+\f0\b \cf6 '#lineWrap'
+\f2\b0 \cf0 ).\cf7 on\cf0 (
+\f0\b \cf6 'change'
+\f2\b0 \cf0 ,
+\f0\b \cf6 '[name="tax_rate"]'
+\f2\b0 \cf0 ,
+\f0\b \cf8 function 
+\f2\b0 \cf0 () \{\uc0\u8232     
+\f0\b \cf8 var 
+\f2\b0 \cf9 $parent \cf0 = $(
+\f0\b \cf8 this
+\f2\b0 \cf0 ).\cf7 parent\cf0 ().\cf7 parent\cf0 ();\uc0\u8232     
+\f0\b \cf8 var 
+\f2\b0 \cf9 taxRate \cf0 = $(
+\f0\b \cf8 this
+\f2\b0 \cf0 ).\cf7 val\cf0 ().\cf7 trim\cf0 ();\uc0\u8232     
+\f0\b \cf8 if
+\f2\b0 \cf0 (\cf9 taxRate\cf0 .
+\f0\b \cf10 match
+\f2\b0 \cf0 (\cf11 /^(100|[1-9]?\\d(\\.\\d\\d?\\d?)?)%$|^0$/\cf0 ))\{\uc0\u8232         
+\f0\b \cf8 var 
+\f2\b0 \cf9 rate \cf0 = \cf9 taxRate\cf0 .
+\f0\b \cf10 match
+\f2\b0 \cf0 (\cf11 /^(100|[1-9]?\\d(\\.\\d\\d?\\d?)?)%$|^0$/\cf0 )[\cf11 0\cf0 ];\uc0\u8232         $(
+\f0\b \cf8 this
+\f2\b0 \cf0 ).\cf7 val\cf0 (\cf9 rate\cf0 );\uc0\u8232         
+\f0\b \cf8 var 
+\f2\b0 \cf9 moneyStr \cf0 = \cf9 $parent\cf0 .\cf7 find\cf0 (
+\f0\b \cf6 '[name="money"]'
+\f2\b0 \cf0 ).
+\f0\b \cf10 val
+\f2\b0 \cf0 ().\cf7 trim\cf0 ().
+\f0\b \cf10 replace
+\f2\b0 \cf0 (\cf11 /,/gi\cf0 ,
+\f0\b \cf6 ''
+\f2\b0 \cf0 );\uc0\u8232         
+\f0\b \cf8 if
+\f2\b0 \cf0 (\cf9 moneyStr\cf0 )\{\uc0\u8232             \cf9 $parent\cf0 .\cf7 find\cf0 (
+\f0\b \cf6 '[name="tax_amount"]'
+\f2\b0 \cf0 ).
+\f0\b \cf10 val
+\f2\b0 \cf0 (
+\f3\i format_num
+\f2\i0 (
+\f3\i accMul
+\f2\i0 (\cf9 moneyStr\cf0 ,
+\f3\i accDiv
+\f2\i0 (\cf7 parseFloat\cf0 (\cf9 taxRate\cf0 ),\cf11 100\cf0 )).\cf7 toFixed\cf0 (\cf11 2\cf0 )));\uc0\u8232         \}
+\f0\b \cf8 else
+\f2\b0 \cf0 \{\uc0\u8232             \cf9 $parent\cf0 .\cf7 find\cf0 (
+\f0\b \cf6 '[name="tax_amount"]'
+\f2\b0 \cf0 ).
+\f0\b \cf10 val
+\f2\b0 \cf0 (
+\f0\b \cf6 ''
+\f2\b0 \cf0 );\uc0\u8232         \}\u8232     \}
+\f0\b \cf8 else
+\f2\b0 \cf0 \{\uc0\u8232         $(
+\f0\b \cf8 this
+\f2\b0 \cf0 ).\cf7 val\cf0 (
+\f0\b \cf6 ''
+\f2\b0 \cf0 );\uc0\u8232         \cf9 $parent\cf0 .\cf7 find\cf0 (
+\f0\b \cf6 '[name="tax_amount"]'
+\f2\b0 \cf0 ).
+\f0\b \cf10 val
+\f2\b0 \cf0 (
+\f0\b \cf6 ''
+\f2\b0 \cf0 );\uc0\u8232     \}\u8232 \u8232     
+\f3\i autoCalc
+\f2\i0 ();\uc0\u8232 \});\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+var s = $.trim($(this).val().replace(/,/gi,''));\
+        if(/[^0-9\\.\\-]/.test(s)||s == '')\{\
+        	$(this).val('').attr('title','');\
+    	\}else\{\
+	        s=s.replace(/^(-?\\d*)$/,"$1.");\
+	        s=(s+"00").replace(/(-?\\d*\\.\\d\\d)\\d*/,"$1");\
+	        s=s.replace(".",",");\
+	        var re=/(\\d)(\\d\{3\},)/;\
+	        while(re.test(s))\
+	            s=s.replace(re,"$1,$2");\
+	        s=s.replace(/,(\\d\\d)$/,".$1");\
+	        s=s.replace(/^\\./,"0.");\
+	        s=s.replace(/^\\-\\./,"-0.");\
+	        $(this).val(s).attr('title',s);\
+    	\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 $(
+\f0\b \cf12 '.save-block \cf2 table tbody tr\cf12 :not(:last-child) \cf2 input\cf12 '
+\f2\b0 \cf0 ).\cf13 on\cf0 (
+\f0\b \cf12 'keyup blur'
+\f2\b0 \cf0 ,
+\f0\b \cf2 function 
+\f2\b0 \cf0 ()\{\uc0\u8232     
+\f0\b \cf2 var 
+\f2\b0 \cf14 oldVal \cf0 = $(
+\f0\b \cf2 this
+\f2\b0 \cf0 ).\cf13 val\cf0 ();\uc0\u8232     
+\f0\b \cf2 var 
+\f2\b0 \cf14 _val \cf0 = \cf14 oldVal\cf0 .
+\f0\b \cf3 trim
+\f2\b0 \cf0 ();\uc0\u8232     
+\f0\b \cf2 var 
+\f2\b0 \cf14 index \cf0 = \cf14 oldVal\cf0 .\cf13 indexOf\cf0 (\cf14 _val\cf0 );\uc0\u8232     
+\f0\b \cf2 if
+\f2\b0 \cf0 (\cf14 _val\cf0 .
+\f0\b \cf3 length 
+\f2\b0 \cf0 > \cf4 15\cf0 )\{\uc0\u8232         $(
+\f0\b \cf2 this
+\f2\b0 \cf0 ).\cf13 val\cf0 (\cf14 oldVal\cf0 .\cf13 substr\cf0 (\cf4 0\cf0 ,\cf14 index \cf0 + \cf4 15\cf0 ));\uc0\u8232     \}\u8232 \});\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \uc0\u8232     $(
+\f0\b \cf12 '.header_menu'
+\f2\b0 \cf0 ).\cf13 hide\cf0 ();\uc0\u8232     $(
+\f0\b \cf12 '#addBtn'
+\f2\b0 \cf0 ).\cf13 on\cf0 (
+\f0\b \cf12 'click'
+\f2\b0 \cf0 ,
+\f0\b \cf2 function
+\f2\b0 \cf0 ()\{\uc0\u8232         
+\f1\i\b \cf3 caseId 
+\f2\i0\b0 \cf0 = -\cf4 1\cf0 ;\uc0\u8232         $(
+\f0\b \cf12 '#addPaper'
+\f2\b0 \cf0 ).\cf13 show\cf0 ();\uc0\u8232         $(
+\f0\b \cf12 '#addPaper .paper-title \cf2 span\cf12 '
+\f2\b0 \cf0 ).\cf13 text\cf0 (
+\f0\b \cf12 '
+\f4 \'d0\'c2\'d4\'f6\'ca\'d4\'be\'ed
+\f0 '
+\f2\b0 \cf0 );\uc0\u8232         $(
+\f0\b \cf12 '#caseId'
+\f2\b0 \cf0 ).\cf13 parent\cf0 ().\cf13 show\cf0 ();\uc0\u8232         $(
+\f0\b \cf12 '#addPaper \cf2 input\cf12 :disabled:not("#caseCode")'
+\f2\b0 \cf0 ).\cf13 removeAttr\cf0 (
+\f0\b \cf12 'disabled'
+\f2\b0 \cf0 );\uc0\u8232         $(
+\f0\b \cf12 '#addPaper \cf2 input\cf12 [type="text"],#description'
+\f2\b0 \cf0 ).\cf13 val\cf0 (
+\f0\b \cf12 ''
+\f2\b0 \cf0 );\uc0\u8232         $(
+\f0\b \cf12 '\cf2 input\cf12 [name="dangangpk"]:checked'
+\f2\b0 \cf0 ).\cf13 removeProp\cf0 (
+\f0\b \cf12 'checked'
+\f2\b0 \cf0 );\uc0\u8232         
+\f3\i createCaseCode
+\f2\i0 ();\uc0\u8232         
+\f3\i getTemplateCourseCases
+\f2\i0 ();\uc0\u8232     \});\u8232     $(
+\f0\b \cf12 '#addPaper .close-btn,#addPaper .cancel-btn'
+\f2\b0 \cf0 ).\cf13 on\cf0 (
+\f0\b \cf12 'click'
+\f2\b0 \cf0 ,
+\f0\b \cf2 function
+\f2\b0 \cf0 ()\{\uc0\u8232         $(
+\f0\b \cf12 '#addPaper'
+\f2\b0 \cf0 ).\cf13 hide\cf0 ();\uc0\u8232     \});\u8232     
+\f3\i \cf15 //
+\f4\i0 \'d0\'de\'b8\'c4\'b5\'af\'b4\'b0
+\f3\i \uc0\u8232     
+\f2\i0 \cf0 $(
+\f0\b \cf12 '#paperList'
+\f2\b0 \cf0 ).\cf13 on\cf0 (
+\f0\b \cf12 'click'
+\f2\b0 \cf0 ,
+\f0\b \cf12 'div > *:nth-child(1)'
+\f2\b0 \cf0 ,
+\f0\b \cf2 function 
+\f2\b0 \cf0 () \{\uc0\u8232         $(
+\f0\b \cf12 '#addPaper'
+\f2\b0 \cf0 ).\cf13 show\cf0 ();\uc0\u8232         $(
+\f0\b \cf12 '#addPaper .paper-title \cf2 span\cf12 '
+\f2\b0 \cf0 ).\cf13 text\cf0 (
+\f0\b \cf12 '
+\f4 \'d0\'de\'b8\'c4\'ca\'d4\'be\'ed
+\f0 '
+\f2\b0 \cf0 );\uc0\u8232         $(
+\f0\b \cf12 '#caseId'
+\f2\b0 \cf0 ).\cf13 parent\cf0 ().\cf13 hide\cf0 ();\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 obj \cf0 = $(
+\f0\b \cf2 this
+\f2\b0 \cf0 ).\cf13 parents\cf0 (
+\f0\b \cf12 'tr'
+\f2\b0 \cf0 ).\cf13 data\cf0 (
+\f0\b \cf12 'obj'
+\f2\b0 \cf0 );\uc0\u8232         
+\f1\i\b \cf3 caseId 
+\f2\i0\b0 \cf0 = \cf14 obj\cf0 .
+\f0\b \cf3 id
+\f2\b0 \cf0 ;\uc0\u8232         $(
+\f0\b \cf12 '#addPaper \cf2 input\cf12 :not("#caseName")'
+\f2\b0 \cf0 ).\cf13 attr\cf0 (
+\f0\b \cf12 'disabled'
+\f2\b0 \cf0 ,
+\f0\b \cf2 true
+\f2\b0 \cf0 );\uc0\u8232         $(
+\f0\b \cf12 '#caseCode'
+\f2\b0 \cf0 ).\cf13 val\cf0 (\cf14 obj\cf0 .case_code);\uc0\u8232         $(
+\f0\b \cf12 '#caseName'
+\f2\b0 \cf0 ).\cf13 val\cf0 (\cf14 obj\cf0 .case_name);\uc0\u8232         $(
+\f0\b \cf12 '#description'
+\f2\b0 \cf0 ).\cf13 val\cf0 (\cf14 obj\cf0 .\cf14 description\cf0 );\uc0\u8232         $(
+\f0\b \cf12 'input[name="dangangpk"][value="' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .is_pk + 
+\f0\b \cf12 '"]'
+\f2\b0 \cf0 ).\cf13 prop\cf0 (
+\f0\b \cf12 'checked'
+\f2\b0 \cf0 ,
+\f0\b \cf2 true
+\f2\b0 \cf0 );\uc0\u8232     \});\u8232     
+\f3\i \cf15 //
+\f4\i0 \'c9\'be\'b3\'fd
+\f3\i \uc0\u8232     
+\f2\i0 \cf0 $(
+\f0\b \cf12 '#paperList'
+\f2\b0 \cf0 ).\cf13 on\cf0 (
+\f0\b \cf12 'click'
+\f2\b0 \cf0 ,
+\f0\b \cf12 'div > *:nth-child(2)'
+\f2\b0 \cf0 ,
+\f0\b \cf2 function 
+\f2\b0 \cf0 () \{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 id \cf0 = $(
+\f0\b \cf2 this
+\f2\b0 \cf0 ).\cf13 parent\cf0 ().\cf13 data\cf0 (
+\f0\b \cf12 'id'
+\f2\b0 \cf0 );\uc0\u8232         
+\f0\b \cf3 message
+\f2\b0 \cf0 .\cf13 showConfirm\cf0 (\{\uc0\u8232             
+\f0\b \cf3 msg
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'c8\'b7\'b6\'a8\'c9\'be\'b3\'fd\'c2\'f0\'a3\'bf
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232             
+\f0\b \cf3 mask
+\f2\b0 \cf0 :
+\f0\b \cf2 true
+\f2\b0 \cf0 ,\uc0\u8232             
+\f0\b \cf3 style
+\f2\b0 \cf0 :
+\f0\b \cf12 "message_cfmbox_tree"
+\f2\b0 \cf0 ,\uc0\u8232             \cf13 callback\cf0 :
+\f0\b \cf2 function
+\f2\b0 \cf0 (ok)\{\uc0\u8232                 
+\f0\b \cf2 if
+\f2\b0 \cf0 (ok)\{\uc0\u8232                     
+\f3\i deleteCourse
+\f2\i0 (\cf14 id\cf0 );\uc0\u8232                 \}\u8232             \}\u8232         \});\u8232     \});\u8232     
+\f3\i \cf15 //
+\f4\i0 \'b5\'bc\'b3\'f6
+\f3\i \uc0\u8232     
+\f2\i0 \cf0 $(
+\f0\b \cf12 '#paperList'
+\f2\b0 \cf0 ).\cf13 on\cf0 (
+\f0\b \cf12 'click'
+\f2\b0 \cf0 ,
+\f0\b \cf12 'div > *:nth-child(3)'
+\f2\b0 \cf0 ,
+\f0\b \cf2 function 
+\f2\b0 \cf0 () \{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 id \cf0 = $(
+\f0\b \cf2 this
+\f2\b0 \cf0 ).\cf13 parent\cf0 ().\cf13 data\cf0 (
+\f0\b \cf12 'id'
+\f2\b0 \cf0 );\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 casePackid \cf0 = +
+\f0\b \cf2 new 
+\f2\b0 \cf0 Date();\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 maskId \cf0 = $.\cf13 showLoadingIcon\cf0 ();\uc0\u8232         $.\cf13 ajaxSeentao\cf0 (
+\f1\i\b \cf3 baseUri 
+\f2\i0\b0 \cf0 + 
+\f0\b \cf12 "/org/coursecase/packCaseZip"
+\f2\b0 \cf0 , $.\cf13 formatParSeentao\cf0 (\{ 
+\f0\b \cf3 casePackid
+\f2\b0 \cf0 : \cf14 casePackid\cf0 , 
+\f0\b \cf3 caseId
+\f2\b0 \cf0 : \cf14 id \cf0 \}), 
+\f0\b \cf2 function 
+\f2\b0 \cf0 (json) \{\uc0\u8232             
+\f0\b \cf2 if 
+\f2\b0 \cf0 (!json) \{\uc0\u8232                 
+\f0\b \cf3 console
+\f2\b0 \cf0 .\cf13 log\cf0 (
+\f0\b \cf12 "
+\f4 \'b2\'e9\'d1\'af\'b3\'f6\'cf\'d6\'ce\'ca\'cc\'e2\'a3\'a1\'a3\'a1\'a3\'a1\'a3\'a1\'a3\'a1\'a3\'a1\'a3\'a1\'a3\'a1\'a3\'a1\'a3\'a1
+\f0 "
+\f2\b0 \cf0 );\uc0\u8232             \}\u8232             json = json[\cf4 0\cf0 ].outMap;\uc0\u8232             
+\f0\b \cf2 if 
+\f2\b0 \cf0 (json.\cf13 success\cf0 ) \{\uc0\u8232                 
+\f0\b \cf2 if 
+\f2\b0 \cf0 (json.
+\f0\b \cf3 state 
+\f2\b0 \cf0 === 
+\f0\b \cf12 "2"
+\f2\b0 \cf0 ) \{\uc0\u8232                     $.\cf13 clearLoadingIcon\cf0 (\cf14 maskId\cf0 );\uc0\u8232                     
+\f3\i \cf15 //
+\f4\i0 \'b4\'f2\'b0\'fc\'cd\'ea\'b3\'c9\'a3\'ac\'cf\'c2\'d4\'d8\'ce\'c4\'bc\'fe
+\f3\i \uc0\u8232                     
+\f0\i0\b \cf3 window
+\f2\b0 \cf0 .
+\f0\b \cf3 location
+\f2\b0 \cf0 .
+\f0\b \cf3 href 
+\f2\b0 \cf0 = 
+\f1\i\b \cf3 baseUri 
+\f2\i0\b0 \cf0 + 
+\f0\b \cf12 '/org/coursecase/exportCase?caseId=' 
+\f2\b0 \cf0 + \cf14 id \cf0 + 
+\f0\b \cf12 '&casePackid=' 
+\f2\b0 \cf0 + \cf14 casePackid\cf0 ;\uc0\u8232                 \}\u8232             \} 
+\f0\b \cf2 else 
+\f2\b0 \cf0 \{\uc0\u8232                 $.\cf13 clearLoadingIcon\cf0 (\cf14 maskId\cf0 );\uc0\u8232             \}\u8232         \});\u8232     \});\u8232     $(
+\f0\b \cf12 '#addPaper .ok-btn'
+\f2\b0 \cf0 ).\cf13 on\cf0 (
+\f0\b \cf12 'click'
+\f2\b0 \cf0 ,
+\f0\b \cf2 function
+\f2\b0 \cf0 ()\{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 caseCode \cf0 = $(
+\f0\b \cf12 '#caseCode'
+\f2\b0 \cf0 ).\cf13 val\cf0 ();\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 caseName \cf0 = $(
+\f0\b \cf12 '#caseName'
+\f2\b0 \cf0 ).\cf13 val\cf0 ().\cf13 trim\cf0 ();\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 currentCaseId \cf0 = $(
+\f0\b \cf12 '#caseId'
+\f2\b0 \cf0 ).\cf13 sval\cf0 ();\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 description \cf0 = $(
+\f0\b \cf12 '#description'
+\f2\b0 \cf0 ).\cf13 val\cf0 ().\cf13 trim\cf0 ();\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 isPK \cf0 = $(
+\f0\b \cf12 '\cf2 input\cf12 [name="dangangpk"]:checked'
+\f2\b0 \cf0 ).\cf13 val\cf0 ();\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 param\cf0 ;\uc0\u8232         
+\f0\b \cf2 if
+\f2\b0 \cf0 (
+\f1\i\b \cf3 caseId 
+\f2\i0\b0 \cf0 == -\cf4 1\cf0 )\{
+\f3\i \cf15 //
+\f4\i0 \'d0\'c2\'d4\'f6
+\f3\i \uc0\u8232             
+\f0\i0\b \cf2 if
+\f2\b0 \cf0 (\cf14 caseCode\cf0 &&\cf14 caseName\cf0 &&\cf14 description\cf0 &&\cf14 isPK\cf0 &&\cf14 currentCaseId\cf0 )\{\uc0\u8232                 \cf14 param \cf0 = \{
+\f0\b \cf3 caseCode
+\f2\b0 \cf0 :\cf14 caseCode\cf0 ,
+\f0\b \cf3 caseName
+\f2\b0 \cf0 :\cf14 caseName\cf0 ,
+\f0\b \cf3 caseId
+\f2\b0 \cf0 :\cf14 currentCaseId\cf0 ,
+\f0\b \cf3 newdescription
+\f2\b0 \cf0 :\cf14 description\cf0 ,
+\f0\b \cf3 isPK
+\f2\b0 \cf0 :\cf14 isPK\cf0 \};\uc0\u8232                 
+\f3\i copyCase
+\f2\i0 (\cf14 param\cf0 );\uc0\u8232             \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{\uc0\u8232                 $.\cf13 showMessage\cf0 (\{\uc0\u8232                     
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                     
+\f0\b \cf3 message
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'c7\'eb\'bd\'ab\'d0\'c5\'cf\'a2\'cc\'ee\'d0\'b4\'cd\'ea\'d5\'fb
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                     
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "alert" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                     
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232                 \cf0 \});\uc0\u8232             \}\u8232         \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{
+\f3\i \cf15 //
+\f4\i0 \'d0\'de\'b8\'c4
+\f3\i \uc0\u8232             
+\f0\i0\b \cf2 if
+\f2\b0 \cf0 (\cf14 caseName\cf0 &&\cf14 description\cf0 )\{\uc0\u8232                 \cf14 param \cf0 = \{
+\f0\b \cf3 id
+\f2\b0 \cf0 :
+\f1\i\b \cf3 caseId
+\f2\i0\b0 \cf0 ,
+\f0\b \cf3 caseName
+\f2\b0 \cf0 :\cf14 caseName\cf0 ,
+\f0\b \cf3 description
+\f2\b0 \cf0 :\cf14 description\cf0 \};\uc0\u8232                 
+\f3\i updateCase
+\f2\i0 (\cf14 param\cf0 );\uc0\u8232             \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{\uc0\u8232                 $.\cf13 showMessage\cf0 (\{\uc0\u8232                     
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                     
+\f0\b \cf3 message
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'c7\'eb\'bd\'ab\'d0\'c5\'cf\'a2\'cc\'ee\'d0\'b4\'cd\'ea\'d5\'fb
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                     
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "alert" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                     
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232                 \cf0 \});\uc0\u8232             \}\u8232         \}\u8232     \});\u8232     $(
+\f0\b \cf12 '#paperList'
+\f2\b0 \cf0 ).\cf13 on\cf0 (
+\f0\b \cf12 'click'
+\f2\b0 \cf0 ,
+\f0\b \cf12 '.case-name'
+\f2\b0 \cf0 ,
+\f0\b \cf2 function 
+\f2\b0 \cf0 () \{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 obj \cf0 = $(
+\f0\b \cf2 this
+\f2\b0 \cf0 ).\cf13 parents\cf0 (
+\f0\b \cf12 'tr'
+\f2\b0 \cf0 ).\cf13 data\cf0 (
+\f0\b \cf12 'obj'
+\f2\b0 \cf0 );\uc0\u8232         
+\f3\i saveRuntimeCase
+\f2\i0 (\{
+\f0\b \cf3 caseId
+\f2\b0 \cf0 :\cf14 obj\cf0 .
+\f0\b \cf3 id
+\f2\b0 \cf0 ,
+\f0\b \cf3 caseName
+\f2\b0 \cf0 :\cf14 obj\cf0 .case_name\});\uc0\u8232     \});\u8232     
+\f3\i findCourseCasesOfPage
+\f2\i0 ();\uc0\u8232     $(
+\f0\b \cf12 '#caseName'
+\f2\b0 \cf0 ).\cf13 on\cf0 (
+\f0\b \cf12 'keyup'
+\f2\b0 \cf0 ,
+\f0\b \cf2 function 
+\f2\b0 \cf0 ()\{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 oldVal \cf0 = $(
+\f0\b \cf2 this
+\f2\b0 \cf0 ).\cf13 val\cf0 ();\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 _val \cf0 = \cf14 oldVal\cf0 .\cf13 trim\cf0 ();\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 index \cf0 = \cf14 oldVal\cf0 .\cf13 indexOf\cf0 (\cf14 _val\cf0 );\uc0\u8232         
+\f0\b \cf2 if
+\f2\b0 \cf0 (\cf14 _val\cf0 .
+\f0\b \cf3 length 
+\f2\b0 \cf0 > \cf4 20\cf0 )\{\uc0\u8232             $(
+\f0\b \cf2 this
+\f2\b0 \cf0 ).\cf13 val\cf0 (\cf14 oldVal\cf0 .\cf13 substr\cf0 (\cf4 0\cf0 ,\cf14 index \cf0 + \cf4 20\cf0 ));\uc0\u8232         \}\u8232     \});\u8232 \});\u8232 
+\f0\b \cf2 function 
+\f3\i\b0 \cf0 findCourseCasesOfPage
+\f2\i0 () \{\uc0\u8232     $.\cf13 loadData\cf0 (\{\uc0\u8232         
+\f0\b \cf3 url
+\f2\b0 \cf0 : 
+\f1\i\b \cf3 baseUri
+\f2\i0\b0 \cf0 +
+\f0\b \cf12 '/org/coursecase/findCourseCasesOfPage'
+\f2\b0 \cf0 , 
+\f3\i \cf15 //
+\f4\i0 \'bc\'d3\'d4\'d8\'ca\'fd\'be\'dd\'b5\'c4
+\f3\i URL(
+\f4\i0 \'b1\'d8\'d2\'aa\'b2\'ce\'ca\'fd
+\f3\i )
+\f4\i0 \'a1\'a3
+\f3\i \uc0\u8232         
+\f2\i0 \cf13 callback\cf0 : 
+\f0\b \cf2 function
+\f2\b0 \cf0 (data, e) \{\uc0\u8232             
+\f0\b \cf2 var 
+\f2\b0 \cf14 result \cf0 = data[\cf4 0\cf0 ].outMap;\uc0\u8232             
+\f0\b \cf2 if
+\f2\b0 \cf0 (\cf14 result\cf0 .\cf13 success\cf0 )\{\uc0\u8232                 $(
+\f0\b \cf12 '#paperList'
+\f2\b0 \cf0 ).\cf13 empty\cf0 ();\uc0\u8232                 
+\f0\b \cf2 var 
+\f2\b0 \cf14 $htmlStr \cf0 = 
+\f0\b \cf12 ''
+\f2\b0 \cf0 ,\cf14 i \cf0 = \cf4 0\cf0 ,\cf14 obj\cf0 ;\uc0\u8232                 
+\f0\b \cf2 for
+\f2\b0 \cf0 (\cf14 i \cf0 = \cf4 0\cf0 ;\cf14 i \cf0 < \cf14 result\cf0 .
+\f0\b \cf3 data
+\f2\b0 \cf0 .
+\f0\b \cf3 length
+\f2\b0 \cf0 ;\cf14 i\cf0 ++)\{\uc0\u8232                     \cf14 obj \cf0 = \cf14 result\cf0 .
+\f0\b \cf3 data
+\f2\b0 \cf0 [\cf14 i\cf0 ];\uc0\u8232                     \cf14 $htmlStr \cf0 = $(
+\f0\b \cf12 '<tr>'\uc0\u8232                                 
+\f2\b0 \cf0 + 
+\f0\b \cf12 '<td title="' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .case_code + 
+\f0\b \cf12 '">' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .case_code + 
+\f0\b \cf12 '</td>'\uc0\u8232                                 
+\f2\b0 \cf0 + 
+\f0\b \cf12 '<td title="' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .case_name + 
+\f0\b \cf12 '"><span class="case-name">' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .case_name + 
+\f0\b \cf12 '</span></td>'\uc0\u8232                                 
+\f2\b0 \cf0 + 
+\f0\b \cf12 '<td title="' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .\cf14 description \cf0 + 
+\f0\b \cf12 '">' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .\cf14 description \cf0 + 
+\f0\b \cf12 '</td>'\uc0\u8232                                 
+\f2\b0 \cf0 + 
+\f0\b \cf12 '<td><input type="checkbox"' 
+\f2\b0 \cf0 + (\cf14 obj\cf0 .is_pk == \cf4 1\cf0 ?
+\f0\b \cf12 ' checked'
+\f2\b0 \cf0 :
+\f0\b \cf12 ''
+\f2\b0 \cf0 ) + 
+\f0\b \cf12 ' disabled/></td>'\uc0\u8232                                 
+\f2\b0 \cf0 + 
+\f0\b \cf12 '<td title="' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .user_code + 
+\f0\b \cf12 '">' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .user_code + 
+\f0\b \cf12 '</td>'\uc0\u8232                                 
+\f2\b0 \cf0 + 
+\f0\b \cf12 '<td title="' 
+\f2\b0 \cf0 + 
+\f3\i timeHandler
+\f2\i0 (\cf14 obj\cf0 .
+\f0\b \cf3 createtime
+\f2\b0 \cf0 ) + 
+\f0\b \cf12 '">' 
+\f2\b0 \cf0 + 
+\f3\i timeHandler
+\f2\i0 (\cf14 obj\cf0 .
+\f0\b \cf3 createtime
+\f2\b0 \cf0 ) + 
+\f0\b \cf12 '</td>'\uc0\u8232                                 
+\f2\b0 \cf0 + 
+\f0\b \cf12 '<td><div data-id="' 
+\f2\b0 \cf0 + \cf14 obj\cf0 .
+\f0\b \cf3 id 
+\f2\b0 \cf0 + 
+\f0\b \cf12 '"><span>
+\f4 \'d0\'de\'b8\'c4
+\f0 </span><span>
+\f4 \'c9\'be\'b3\'fd
+\f0 </span><span>
+\f4 \'b5\'bc\'b3\'f6
+\f0 </span></div></td>'\uc0\u8232                             
+\f2\b0 \cf0 + 
+\f0\b \cf12 '</tr>'
+\f2\b0 \cf0 );\uc0\u8232                     \cf14 $htmlStr\cf0 .
+\f0\b \cf3 data
+\f2\b0 \cf0 (
+\f0\b \cf12 'obj'
+\f2\b0 \cf0 ,\cf14 obj\cf0 );\uc0\u8232                     $(
+\f0\b \cf12 '#paperList'
+\f2\b0 \cf0 ).\cf13 append\cf0 (\cf14 $htmlStr\cf0 );\uc0\u8232                 \}\u8232             \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{\uc0\u8232                 $.\cf13 showMessage\cf0 (\{\uc0\u8232                     
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                     
+\f0\b \cf3 message
+\f2\b0 \cf0 :\cf14 result\cf0 .
+\f0\b \cf3 message
+\f2\b0 \cf0 ||
+\f0\b \cf12 "
+\f4 \'b2\'e9\'bf\'b4\'cb\'f9\'d3\'d0\'ca\'d4\'be\'ed\'ca\'a7\'b0\'dc
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                     
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "error" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                     
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232                 \cf0 \});\uc0\u8232             \}\u8232         \},\u8232         
+\f0\b \cf3 pageSize
+\f2\b0 \cf0 : \cf4 10\cf0 ,\uc0\u8232         
+\f0\b \cf3 laypageCon
+\f2\b0 \cf0 : 
+\f0\b \cf12 "paging"
+\f2\b0 \cf0 ,\uc0\u8232         
+\f0\b \cf3 parameter
+\f2\b0 \cf0 : \{\}\uc0\u8232     \});\u8232 \}\u8232 
+\f0\b \cf2 function 
+\f3\i\b0 \cf0 timeHandler
+\f2\i0 (timer) \{\uc0\u8232     
+\f0\b \cf2 var 
+\f2\b0 \cf14 date \cf0 = 
+\f0\b \cf2 new 
+\f2\b0 \cf0 Date(timer);\uc0\u8232     
+\f0\b \cf2 return 
+\f2\b0 \cf14 date\cf0 .\cf13 getFullYear\cf0 () + 
+\f0\b \cf12 '-' 
+\f2\b0 \cf0 + 
+\f3\i numHandler
+\f2\i0 (\cf14 date\cf0 .\cf13 getMonth\cf0 () + \cf4 1\cf0 ) + 
+\f0\b \cf12 '-' 
+\f2\b0 \cf0 + 
+\f3\i numHandler
+\f2\i0 (\cf14 date\cf0 .\cf13 getDate\cf0 ());\uc0\u8232 \}\u8232 
+\f0\b \cf2 function 
+\f3\i\b0 \cf0 numHandler
+\f2\i0 (num) \{\uc0\u8232     
+\f0\b \cf2 return 
+\f2\b0 \cf0 num < \cf4 10 \cf0 ? (
+\f0\b \cf12 '0' 
+\f2\b0 \cf0 + num):num;\uc0\u8232 \}\u8232 
+\f0\b \cf2 function 
+\f3\i\b0 \cf0 createCaseCode
+\f2\i0 () \{\uc0\u8232     $.\cf13 ajaxSeentao\cf0 (
+\f1\i\b \cf3 baseUri
+\f2\i0\b0 \cf0 +
+\f0\b \cf12 "/org/coursecase/createCaseCode"
+\f2\b0 \cf0 ,\{\},
+\f0\b \cf2 function
+\f2\b0 \cf0 (data)\{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 result \cf0 = data[\cf4 0\cf0 ].outMap;\uc0\u8232         
+\f0\b \cf2 if
+\f2\b0 \cf0 (\cf14 result\cf0 .\cf13 success\cf0 )\{\uc0\u8232             $(
+\f0\b \cf12 '#caseCode'
+\f2\b0 \cf0 ).\cf13 val\cf0 (\cf14 result\cf0 .\cf14 caseCode\cf0 );\uc0\u8232         \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{\uc0\u8232             $.\cf13 showMessage\cf0 (\{\uc0\u8232                 
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 message
+\f2\b0 \cf0 :\cf14 result\cf0 .
+\f0\b \cf3 message
+\f2\b0 \cf0 ||
+\f0\b \cf12 "
+\f4 \'b4\'b4\'bd\'a8\'b0\'b8\'c0\'fd\'b1\'e0\'ba\'c5\'ca\'a7\'b0\'dc
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "error" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                 
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232             \cf0 \});\uc0\u8232         \}\u8232     \});\u8232 \}\u8232 
+\f0\b \cf2 function 
+\f3\i\b0 \cf0 getTemplateCourseCases
+\f2\i0 () \{\uc0\u8232     $.\cf13 ajaxSeentao\cf0 (
+\f1\i\b \cf3 baseUri
+\f2\i0\b0 \cf0 +
+\f0\b \cf12 "/org/coursecase/getTemplateCourseCases"
+\f2\b0 \cf0 ,\{\},
+\f0\b \cf2 function
+\f2\b0 \cf0 (data)\{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 result \cf0 = data[\cf4 0\cf0 ].outMap;\uc0\u8232         
+\f0\b \cf2 if
+\f2\b0 \cf0 (\cf14 result\cf0 .\cf13 success\cf0 )\{\uc0\u8232             $(
+\f0\b \cf12 "#caseId"
+\f2\b0 \cf0 ).\cf13 comboboxSeentao\cf0 (\{\uc0\u8232                 
+\f0\b \cf3 valueField
+\f2\b0 \cf0 :
+\f0\b \cf12 'id'
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 textField
+\f2\b0 \cf0 :
+\f0\b \cf12 'caseName'
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 localData
+\f2\b0 \cf0 : \cf14 result\cf0 .
+\f0\b \cf3 data
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 input
+\f2\b0 \cf0 : 
+\f0\b \cf2 false\uc0\u8232             
+\f2\b0 \cf0 \})\uc0\u8232         \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{\uc0\u8232             $.\cf13 showMessage\cf0 (\{\uc0\u8232                 
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 message
+\f2\b0 \cf0 :\cf14 result\cf0 .
+\f0\b \cf3 message
+\f2\b0 \cf0 ||
+\f0\b \cf12 "
+\f4 \'bb\'f1\'c8\'a1\'b0\'b8\'c0\'fd\'c4\'a3\'b0\'e5\'ca\'a7\'b0\'dc
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "error" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                 
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232             \cf0 \});\uc0\u8232         \}\u8232     \});\u8232 \}\u8232 
+\f0\b \cf2 function 
+\f3\i\b0 \cf0 copyCase
+\f2\i0 (param) \{\uc0\u8232     $.\cf13 ajaxSeentao\cf0 (
+\f1\i\b \cf3 baseUri
+\f2\i0\b0 \cf0 +
+\f0\b \cf12 "/org/coursecase/copyCase"
+\f2\b0 \cf0 ,$.\cf13 formatParSeentao\cf0 (param),
+\f0\b \cf2 function
+\f2\b0 \cf0 (data)\{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 result \cf0 = data[\cf4 0\cf0 ].outMap;\uc0\u8232         
+\f0\b \cf2 if
+\f2\b0 \cf0 (\cf14 result\cf0 .\cf13 success\cf0 )\{\uc0\u8232             
+\f3\i findCourseCasesOfPage
+\f2\i0 ();\uc0\u8232             $(
+\f0\b \cf12 '#addPaper'
+\f2\b0 \cf0 ).\cf13 hide\cf0 ();\uc0\u8232             $.\cf13 showMessage\cf0 (\{\uc0\u8232                 
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 message
+\f2\b0 \cf0 :\cf14 result\cf0 .
+\f0\b \cf3 message
+\f2\b0 \cf0 ||
+\f0\b \cf12 "
+\f4 \'b1\'a3\'b4\'e6\'b3\'c9\'b9\'a6
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "success" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                 
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232             \cf0 \});\uc0\u8232         \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{\uc0\u8232             $.\cf13 showMessage\cf0 (\{\uc0\u8232                 
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 message
+\f2\b0 \cf0 :\cf14 result\cf0 .
+\f0\b \cf3 message
+\f2\b0 \cf0 ||
+\f0\b \cf12 "
+\f4 \'b1\'a3\'b4\'e6\'ca\'a7\'b0\'dc
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "error" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                 
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232             \cf0 \});\uc0\u8232         \}\u8232     \});\u8232 \}\u8232 
+\f0\b \cf2 function 
+\f3\i\b0 \cf0 updateCase
+\f2\i0 (param) \{\uc0\u8232     $.\cf13 ajaxSeentao\cf0 (
+\f1\i\b \cf3 baseUri
+\f2\i0\b0 \cf0 +
+\f0\b \cf12 "/org/coursecase/updateCase"
+\f2\b0 \cf0 ,$.\cf13 formatParSeentao\cf0 (param),
+\f0\b \cf2 function
+\f2\b0 \cf0 (data)\{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 result \cf0 = data[\cf4 0\cf0 ].outMap;\uc0\u8232         
+\f0\b \cf2 if
+\f2\b0 \cf0 (\cf14 result\cf0 .\cf13 success\cf0 )\{\uc0\u8232             $(
+\f0\b \cf12 '#addPaper'
+\f2\b0 \cf0 ).\cf13 hide\cf0 ();\uc0\u8232             
+\f3\i findCourseCasesOfPage
+\f2\i0 ();\uc0\u8232         \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{\uc0\u8232             $.\cf13 showMessage\cf0 (\{\uc0\u8232                 
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 message
+\f2\b0 \cf0 :\cf14 result\cf0 .
+\f0\b \cf3 message
+\f2\b0 \cf0 ||
+\f0\b \cf12 "
+\f4 \'d0\'de\'b8\'c4\'b0\'b8\'c0\'fd\'ca\'a7\'b0\'dc
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "error" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                 
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232             \cf0 \});\uc0\u8232         \}\u8232     \});\u8232 \}\u8232 
+\f0\b \cf2 function 
+\f3\i\b0 \cf0 deleteCourse
+\f2\i0 (caseId) \{\uc0\u8232     $.\cf13 ajaxSeentao\cf0 (
+\f1\i\b \cf3 baseUri
+\f2\i0\b0 \cf0 +
+\f0\b \cf12 "/org/coursecase/deleteCourse"
+\f2\b0 \cf0 ,$.\cf13 formatParSeentao\cf0 (\{
+\f0\b \cf3 caseId
+\f2\b0 \cf0 :caseId\}),
+\f0\b \cf2 function
+\f2\b0 \cf0 (data)\{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 result \cf0 = data[\cf4 0\cf0 ].outMap;\uc0\u8232         
+\f0\b \cf2 if
+\f2\b0 \cf0 (\cf14 result\cf0 .\cf13 success\cf0 )\{\uc0\u8232             
+\f3\i findCourseCasesOfPage
+\f2\i0 ();\uc0\u8232             $.\cf13 showMessage\cf0 (\{\uc0\u8232                 
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 message
+\f2\b0 \cf0 :\cf14 result\cf0 .
+\f0\b \cf3 message
+\f2\b0 \cf0 ||
+\f0\b \cf12 "
+\f4 \'c9\'be\'b3\'fd\'b0\'b8\'c0\'fd\'b3\'c9\'b9\'a6
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "success" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                 
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232             \cf0 \});\uc0\u8232         \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{\uc0\u8232             $.\cf13 showMessage\cf0 (\{\uc0\u8232                 
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 message
+\f2\b0 \cf0 :\cf14 result\cf0 .
+\f0\b \cf3 message
+\f2\b0 \cf0 ||
+\f0\b \cf12 "
+\f4 \'c9\'be\'b3\'fd\'b0\'b8\'c0\'fd\'ca\'a7\'b0\'dc
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "error" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                 
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232             \cf0 \});\uc0\u8232         \}\u8232     \});\u8232 \}\u8232 
+\f0\b \cf2 function 
+\f3\i\b0 \cf0 saveRuntimeCase
+\f2\i0 (param) \{\uc0\u8232     $.\cf13 ajaxSeentao\cf0 (
+\f1\i\b \cf3 baseUri
+\f2\i0\b0 \cf0 +
+\f0\b \cf12 "/homepage/saveRuntimeCase"
+\f2\b0 \cf0 ,$.\cf13 formatParSeentao\cf0 (param),
+\f0\b \cf2 function
+\f2\b0 \cf0 (data)\{\uc0\u8232         
+\f0\b \cf2 var 
+\f2\b0 \cf14 result \cf0 = data[\cf4 0\cf0 ].outMap;\uc0\u8232         
+\f0\b \cf2 if
+\f2\b0 \cf0 (\cf14 result\cf0 .\cf13 success\cf0 )\{\uc0\u8232             
+\f0\b \cf3 location
+\f2\b0 \cf0 .
+\f0\b \cf3 href 
+\f2\b0 \cf0 = 
+\f1\i\b \cf3 baseUri 
+\f2\i0\b0 \cf0 + 
+\f0\b \cf12 '/exam/competion/add_chapter/add_chapter.jsp'
+\f2\b0 \cf0 ;\uc0\u8232         \}
+\f0\b \cf2 else
+\f2\b0 \cf0 \{\uc0\u8232             $.\cf13 showMessage\cf0 (\{\uc0\u8232                 
+\f0\b \cf3 title
+\f2\b0 \cf0 :
+\f0\b \cf12 "
+\f4 \'cc\'e1\'ca\'be
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 message
+\f2\b0 \cf0 :\cf14 result\cf0 .
+\f0\b \cf3 message
+\f2\b0 \cf0 ||
+\f0\b \cf12 "
+\f4 \'b2\'d9\'d7\'f7\'ca\'a7\'b0\'dc
+\f0 "
+\f2\b0 \cf0 ,\uc0\u8232                 
+\f0\b \cf3 icon
+\f2\b0 \cf0 :
+\f0\b \cf12 "error" 
+\f2\b0 \cf0 ,   
+\f3\i \cf15 // 
+\f4\i0 \'cd\'bc\'b1\'ea\'d1\'f9\'ca\'bd
+\f3\i  --
+\f4\i0 \'a1\'b7\'bf\'c9\'d1\'a1
+\f3\i  alert success error
+\f4\i0 \'a3\'ac\'b2\'bb\'d0\'b4\'c4\'ac\'c8\'cf
+\f3\i alert\uc0\u8232                 
+\f0\i0\b \cf3 timeout
+\f2\b0 \cf0 :\cf4 3000\uc0\u8232             \cf0 \});\uc0\u8232         \}\u8232     \});\u8232 \}\
+}
